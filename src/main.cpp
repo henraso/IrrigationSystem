@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 #include "IrrigationSystem.h"
 
 // Plant setup
