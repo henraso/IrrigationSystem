@@ -9,9 +9,9 @@
 
 class IrrigationSystem {
   public:
-    IrrigationSystem(int moisturePin, int pumpPin, int moistureThreshold);
+    IrrigationSystem(int moisturePin, int pumpPin, int moistureThreshold, int wateringTime);
     void readMoisture();
-    void waterPlant(int seconds);
+    void waterPlant();
     void setMoistureThreshold(int moistureThreshold);
     int getMoistureThreshold();
     int getMoisture();
@@ -20,6 +20,7 @@ class IrrigationSystem {
     int _pumpPin;
     int _moistureThreshold;
     int _moisture;
+    int _wateringTime;
 };
 
 
@@ -29,4 +30,4 @@ class IrrigationSystem {
 -------------------------------------
 */
 
-void checkPlant(IrrigationSystem plant, int seconds);
+void checkPlant(IrrigationSystem plant);

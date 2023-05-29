@@ -7,10 +7,11 @@
 */
 
 //Constructor for the IrrigationSystem class
-IrrigationSystem::IrrigationSystem(int moisturePin, int pumpPin, int moistureThreshold) {
+IrrigationSystem::IrrigationSystem(int moisturePin, int pumpPin, int moistureThreshold, int wateringTime) {
   _moisturePin = moisturePin;
   _pumpPin = pumpPin;
   _moistureThreshold = moistureThreshold;
+  _wateringTime = wateringTime;
 }
 
 //function to read the moisture level
@@ -19,9 +20,9 @@ void IrrigationSystem::readMoisture() {
 }
 
 //function to water the plant
-void IrrigationSystem::waterPlant(int seconds) {
+void IrrigationSystem::waterPlant() {
   digitalWrite(_pumpPin, HIGH);
-  delay(seconds*1000);
+  delay(_wateringTime*1000);
   digitalWrite(_pumpPin, LOW);
 }
 
@@ -47,9 +48,9 @@ int IrrigationSystem::getMoisture() {
 */
 
 //function to check if the plant needs water
-void checkPlant(IrrigationSystem plant, int seconds) {
+void checkPlant(IrrigationSystem plant) {
   plant.readMoisture();
   if (plant.getMoisture() < plant.getMoistureThreshold()) {
-    plant.waterPlant(seconds);
+    plant.waterPlant();
   }
 }
