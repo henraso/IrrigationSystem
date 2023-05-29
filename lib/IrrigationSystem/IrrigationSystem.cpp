@@ -15,7 +15,7 @@ IrrigationSystem::IrrigationSystem(int moisturePin, int pumpPin, int moistureThr
 
 //function to read the moisture level
 void IrrigationSystem::readMoisture() {
-  _moisture = map(analogRead(_moisturePin), 0, 4095, 0, 100);
+  _moisture = map(analogRead(_moisturePin), 0, 4095, 100, 0);
 }
 
 //function to water the plant
