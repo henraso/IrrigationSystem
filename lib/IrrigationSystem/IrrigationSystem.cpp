@@ -19,9 +19,9 @@ void IrrigationSystem::readMoisture() {
 }
 
 //function to water the plant
-void IrrigationSystem::waterPlant() {
+void IrrigationSystem::waterPlant(int seconds) {
   digitalWrite(_pumpPin, HIGH);
-  delay(5000);
+  delay(seconds*1000);
   digitalWrite(_pumpPin, LOW);
 }
 
@@ -47,9 +47,9 @@ int IrrigationSystem::getMoisture() {
 */
 
 //function to check if the plant needs water
-void checkPlant(IrrigationSystem plant) {
+void checkPlant(IrrigationSystem plant, int seconds) {
   plant.readMoisture();
   if (plant.getMoisture() < plant.getMoistureThreshold()) {
-    plant.waterPlant();
+    plant.waterPlant(seconds);
   }
 }

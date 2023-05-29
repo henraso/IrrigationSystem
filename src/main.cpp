@@ -6,8 +6,9 @@
 const int moisturePin = 34;
 const int pumpPin = 35;
 
-//set the moisture threshold for plant1
+//set the moisture threshold and watering time for plant1
 int moistureThreshold = 50; // 50%
+int wateringTime = 5; // 5 seconds
 
 //create an instance of the IrrigationSystem class for each plant
 IrrigationSystem plant1(moisturePin, pumpPin, moistureThreshold);
@@ -36,8 +37,8 @@ void setup() {
   ++bootCount;
   Serial.println("Boot number: " + String(bootCount));
 
-  // Check if the plant needs water
-  checkPlant(plant1);
+  // Check if the plant needs water, if true, water it for "wateringTime" seconds
+  checkPlant(plant1, wateringTime);
 
   // Configure the timer to wake us up!
   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
